@@ -6,7 +6,7 @@ const input = document.querySelector('.feedback-form input');
 const LOCAL_STORAGE_KEY = 'feedback-form-state';
 
 form.addEventListener('submit', onFormSubmit);
-form.addEventListener('input', throttle(onTextareaInput, 500));
+form.addEventListener('input', throttle(onFormFieldInput, 500));
 
 let data = {
 email: ' ',
@@ -28,7 +28,7 @@ data.email = '';
 data.message = '';
 }
 
-function onTextareaInput(e) {
+function onFormFieldInput(e) {
 data[e.target.name] = e.target.value;
 localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
 }
